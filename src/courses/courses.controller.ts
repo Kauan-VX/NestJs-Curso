@@ -1,4 +1,15 @@
-import { Controller, Get, Param } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 
 @Controller('courses')
 export class CoursesController {
@@ -8,7 +19,25 @@ export class CoursesController {
   }
 
   @Get(':id')
-  findOne(@Param() params) {
-    return `Curso com ID ${params.id}`;
+  findOne(@Param('id') id: string) {
+    return `Curso com ID ${id}`;
+  }
+
+  @Post()
+  create(@Body() body) {
+    return body;
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() body) {
+    console.log(body);
+
+    return `Update course with ID ${id}`;
+  }
+
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return `Delete course with ID ${id}`;
   }
 }
