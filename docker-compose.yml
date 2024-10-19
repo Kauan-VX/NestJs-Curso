@@ -11,4 +11,4 @@ services:
       - .docker/dbdata:/var/lib/postgressql/data
     environment:
       - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=devtranining
+      - POSTGRES_DB=devtraining

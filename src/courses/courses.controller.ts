@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common';
 import { CoursesService } from './courses.service';
 import { CreateCourseDTO } from './dto/create-course.dto';
-import { updateCourseDTO } from './dto/update-course.dto';
+import { UpdateCourseDTO } from './dto/update-course.dto';
 
 @Controller('courses')
 export class CoursesController {
@@ -24,7 +24,7 @@ export class CoursesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
+  findOne(@Param('id') id: string) {
     return this.coursesService.findOne(id);
   }
 
@@ -34,13 +34,13 @@ export class CoursesController {
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() updateCourseDTO: updateCourseDTO) {
+  update(@Param('id') id: string, @Body() updateCourseDTO: UpdateCourseDTO) {
     return this.coursesService.update(id, updateCourseDTO);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  remove(@Param('id') id: number) {
+  remove(@Param('id') id: string) {
     return this.coursesService.remove(id);
   }
 }
