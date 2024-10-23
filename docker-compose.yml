@@ -3,12 +3,12 @@ version: '3'
 services:
   db:
     build: .
-    container_name: devtranining-db
+    container_name: devtraining-db
     restart: always
     ports:
       - '5432:5432'
     volumes:
-      - .docker/dbdata:/var/lib/postgressql/data
+      - .docker/dbdata:/var/lib/postgresql/data # Corrected path
     environment:
       - POSTGRES_PASSWORD=docker
       - POSTGRES_DB=devtraining
